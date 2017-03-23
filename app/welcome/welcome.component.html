@@ -11,19 +11,27 @@
             </div>
         </div>
 </div>
-    <div class="row">
+<!--<div class="row">-->
     <!--<div class="col-md-12 table-bordered">
         <img class="img-fluid center-block product-item" 
         src="http://placehold.it/1110x480" alt="banner">
     </div>-->
-    <db-category-slide [category]="" (select)="selectCategory($event)"></db-category-slide>
-</div>
+    <!--<db-category-slide [category]="" (select)="selectCategory($event)"></db-category-slide>-->
+<!--</div>-->
 <div class="row">
-    <db-category-card *ngFor="let category of cardCategorie"
-    [category]="category" (select)="selectCategory($event)">
-    </db-category-card>
+    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let category of cardCategories">
+        <db-category-card 
+        [category]="category">
+        </db-category-card>
+    </div>
+    <!--<div class="col-xs-12 col-sm-6 col-md-4">
+        <db-category-card [category]="cardCategories[0]"></db-category-card>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <db-category-card [category]="cardCategories[1]"></db-category-card>
+    </div>-->
 </div>
-<div class="row">
+<!--<div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 table-bordered">
         <div class="card">
             <img class="card-img-top img-fluid" src="http://placehold.it/270x171" 
@@ -75,7 +83,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <div class="row">
     <div class="col-md-3">
         <div class="card">

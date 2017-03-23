@@ -9,28 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var category_1 = require('./category');
 var CategoryCardComponent = (function () {
-    function CategoryCardComponent() {
-        this.select = new core_1.EventEmitter();
+    function CategoryCardComponent(router) {
+        this.router = router;
     }
-    CategoryCardComponent.prototype.browse = function () {
-        this.select.emit(this.category);
+    CategoryCardComponent.prototype.filterProducts = function (category) {
+        this.router.navigate(['/products'], { queryParams: { category: category.id } });
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', category_1.Category)
     ], CategoryCardComponent.prototype, "category", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], CategoryCardComponent.prototype, "select", void 0);
     CategoryCardComponent = __decorate([
         core_1.Component({
             selector: 'db-category-card',
             templateUrl: 'app/category/category-card.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], CategoryCardComponent);
     return CategoryCardComponent;
 }());

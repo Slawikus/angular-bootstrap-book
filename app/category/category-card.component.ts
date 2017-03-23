@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Category } from './category';
 
@@ -8,8 +9,8 @@ import { Category } from './category';
 })
 export class CategoryCardComponent {
     @Input() category: Category;
-    @Output() select: EventEmitter<Category> = new EventEmitter<Category>();
-    browse() {
-        this.select.emit(this.category);
+    constructor(private router: Router) {}
+    filterProducts(category: Category) {
+        this.router.navigate(['/products'], {queryParams: { category: category.id }});
     }
 }
