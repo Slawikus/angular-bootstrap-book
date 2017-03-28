@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var category_module_1 = require('./category/category.module');
+var product_module_1 = require('./product/product.module');
 var app_component_1 = require('./app.component');
 var navbar_component_1 = require('./navbar/navbar.component');
 var welcome_component_1 = require('./welcome/welcome.component');
@@ -23,7 +24,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
-                platform_browser_1.BrowserModule, forms_1.FormsModule, category_module_1.CategoryModule, app_routes_1.routing
+                platform_browser_1.BrowserModule, forms_1.FormsModule, category_module_1.CategoryModule, product_module_1.ProductModule, app_routes_1.routing
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -31,7 +32,7 @@ var AppModule = (function () {
                 welcome_component_1.WelcomeComponent,
                 footer_component_1.FooterComponent
             ],
-            bootstrap: [app_component_1.AppComponent],
+            bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

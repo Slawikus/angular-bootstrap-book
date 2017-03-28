@@ -4,10 +4,19 @@ import { RouterModule } from '@angular/router';
 
 import { CategoryCardComponent } from './category-card.component';
 import { CategorySlideComponent } from './category-slide.component';
+import { CategoryListComponent } from './category-list.component';
 
 @NgModule({
     imports: [ CommonModule, RouterModule ],
-    declarations: [ CategoryCardComponent, CategorySlideComponent ],
-    exports: [ CategoryCardComponent, CategorySlideComponent ]
+    declarations: [ 
+        CategoryCardComponent, 
+        CategorySlideComponent,
+        CategoryListComponent 
+    ],
+    exports: [ 
+        CategoryCardComponent, 
+        CategorySlideComponent,
+        CategoryListComponent 
+    ]
 })
 export class CategoryModule {}

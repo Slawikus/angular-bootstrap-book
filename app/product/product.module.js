@@ -10,30 +10,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
-var category_card_component_1 = require('./category-card.component');
-var category_slide_component_1 = require('./category-slide.component');
-var category_list_component_1 = require('./category-list.component');
-var CategoryModule = (function () {
-    function CategoryModule() {
+var product_card_component_1 = require('./product-card.component');
+var product_grid_component_1 = require('./product-grid.component');
+var product_search_component_1 = require('./product-search.component');
+var category_module_1 = require('../category/category.module');
+var ProductModule = (function () {
+    function ProductModule() {
     }
-    CategoryModule = __decorate([
+    ProductModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, router_1.RouterModule],
+            imports: [common_1.CommonModule, forms_1.FormsModule, router_1.RouterModule, category_module_1.CategoryModule],
             declarations: [
-                category_card_component_1.CategoryCardComponent,
-                category_slide_component_1.CategorySlideComponent,
-                category_list_component_1.CategoryListComponent
+                product_card_component_1.ProductCardComponent,
+                product_grid_component_1.ProductGridComponent,
+                product_search_component_1.ProductSearchComponent
             ],
             exports: [
-                category_card_component_1.CategoryCardComponent,
-                category_slide_component_1.CategorySlideComponent,
-                category_list_component_1.CategoryListComponent
+                product_card_component_1.ProductCardComponent,
+                product_grid_component_1.ProductGridComponent,
+                product_search_component_1.ProductSearchComponent
             ]
         }), 
         __metadata('design:paramtypes', [])
-    ], CategoryModule);
-    return CategoryModule;
+    ], ProductModule);
+    return ProductModule;
 }());
-exports.CategoryModule = CategoryModule;
-//# sourceMappingURL=category.module.js.map
+exports.ProductModule = ProductModule;
+//# sourceMappingURL=product.module.js.map

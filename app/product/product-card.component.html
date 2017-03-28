@@ -1,0 +1,18 @@
+<div class="card-deck-wrapper">
+    <div class="card-deck">
+        <div class="card" *ngFor="let product of productRow">
+            <img class="card-img-top" src="{{product.imageS}}" alt="{{product.title}}">
+            <div class="card-block">
+                <h4 class="card-title">{{product.title}}</h4>
+                <h6 class="card-subtitle mb-2">
+                    <span class="badge badge-success">{{product.price}}</span> 
+                </h6>
+                <!--<div class="card-block">
+                        <p class="card-text">{{product.desc}}</p>
+                </div>-->
+                <a class="btn btn-primary" 
+                    [routerLink]="['/product', product.id]">Browse</a>
+            </div>
+        </div>
+    </div>
+</div>
