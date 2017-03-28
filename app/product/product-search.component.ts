@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Product } from './product';
+import { Product } from './product.service';
 
 @Component({
     selector: 'db-product-search',

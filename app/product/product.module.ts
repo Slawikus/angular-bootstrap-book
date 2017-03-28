@@ -9,6 +9,8 @@ import { ProductSearchComponent } from './product-search.component';
 
 import { CategoryModule } from '../category/category.module';
 
+import { ProductService } from './product.service';
+
 @NgModule({
     imports: [ CommonModule, FormsModule, RouterModule, CategoryModule ],
     declarations: [ 
@@ -20,6 +22,7 @@ import { CategoryModule } from '../category/category.module';
         ProductCardComponent, 
         ProductGridComponent, 
         ProductSearchComponent 
-    ]
+    ],
+    providers: [ ProductService ]
 })
 export class ProductModule {}

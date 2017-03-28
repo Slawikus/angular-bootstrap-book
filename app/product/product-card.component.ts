@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Product } from './product';
+import { Product } from './product.service';
 
 @Component({
     selector: 'db-product-card',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Product, getProducts } from './product';
+import { Product, ProductService } from './product.service';
 
 @Component({
     selector: 'db-product-grid',
@@ -10,11 +10,14 @@ import { Product, getProducts } from './product';
 export class ProductGridComponent {
     products: any = []; 
  
-    constructor(private router: ActivatedRoute) { 
+    constructor(
+        private router: ActivatedRoute, 
+        private productService: ProductService) { 
         this.router.queryParams.subscribe(params => {
             let category: string = params['category'];
             let search: string = params['search'];
-            let products: Product[] = getProducts(category, search);
+            let products: Product[] = 
+                this.productService.getProducts(category, search);
             this.products = this.transform(products);
         }); 
     }
