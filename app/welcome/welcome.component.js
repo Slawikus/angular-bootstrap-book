@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var category_1 = require('../category/category');
+var category_service_1 = require('../category/category.service');
 var WelcomeComponent = (function () {
-    function WelcomeComponent() {
-        this.cardCategories = category_1.getCategories();
+    function WelcomeComponent(categoryService) {
+        this.categoryService = categoryService;
+        this.cardCategories = this.categoryService.getCategories();
     }
     WelcomeComponent = __decorate([
         core_1.Component({
             selector: 'db-welcome',
             templateUrl: 'app/welcome/welcome.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [category_service_1.CategoryService])
     ], WelcomeComponent);
     return WelcomeComponent;
 }());

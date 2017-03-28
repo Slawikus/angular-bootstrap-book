@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var category_1 = require('./category');
+var category_service_1 = require('./category.service');
 var CategoryCardComponent = (function () {
     function CategoryCardComponent(router) {
         this.router = router;
@@ -20,7 +20,7 @@ var CategoryCardComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', category_1.Category)
+        __metadata('design:type', category_service_1.Category)
     ], CategoryCardComponent.prototype, "category", void 0);
     CategoryCardComponent = __decorate([
         core_1.Component({

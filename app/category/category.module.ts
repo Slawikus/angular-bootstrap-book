@@ -6,6 +6,8 @@ import { CategoryCardComponent } from './category-card.component';
 import { CategorySlideComponent } from './category-slide.component';
 import { CategoryListComponent } from './category-list.component';
 
+import { CategoryService } from './category.service';
+
 @NgModule({
     imports: [ CommonModule, RouterModule ],
     declarations: [ 
@@ -17,6 +19,7 @@ import { CategoryListComponent } from './category-list.component';
         CategoryCardComponent, 
         CategorySlideComponent,
         CategoryListComponent 
-    ]
+    ],
+    providers: [ CategoryService ]
 })
 export class CategoryModule {}

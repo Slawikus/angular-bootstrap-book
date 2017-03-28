@@ -14,6 +14,7 @@ var router_1 = require('@angular/router');
 var category_card_component_1 = require('./category-card.component');
 var category_slide_component_1 = require('./category-slide.component');
 var category_list_component_1 = require('./category-list.component');
+var category_service_1 = require('./category.service');
 var CategoryModule = (function () {
     function CategoryModule() {
     }
@@ -29,7 +30,8 @@ var CategoryModule = (function () {
                 category_card_component_1.CategoryCardComponent,
                 category_slide_component_1.CategorySlideComponent,
                 category_list_component_1.CategoryListComponent
-            ]
+            ],
+            providers: [category_service_1.CategoryService]
         }), 
         __metadata('design:paramtypes', [])
     ], CategoryModule);

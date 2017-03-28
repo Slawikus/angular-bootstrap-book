@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var category_1 = require('./category');
+var category_service_1 = require('./category.service');
 var CategorySlideComponent = (function () {
     function CategorySlideComponent() {
         this.select = new core_1.EventEmitter();
@@ -19,7 +19,7 @@ var CategorySlideComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', category_1.Category)
+        __metadata('design:type', category_service_1.Category)
     ], CategorySlideComponent.prototype, "category", void 0);
     __decorate([
         core_1.Output(), 

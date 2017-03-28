@@ -10,11 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var category_1 = require('./category');
+var category_service_1 = require('./category.service');
 var CategoryListComponent = (function () {
-    function CategoryListComponent(router) {
+    function CategoryListComponent(router, categoryService) {
         this.router = router;
-        this.categories = category_1.getCategories();
+        this.categoryService = categoryService;
+        this.categories = this.categoryService.getCategories();
     }
     CategoryListComponent.prototype.filterProducts = function (category) {
         this.router.navigate(['/products'], { queryParams: { category: category.id } });
@@ -24,7 +25,7 @@ var CategoryListComponent = (function () {
             selector: 'db-category-list',
             templateUrl: 'app/category/category-list.component.html'
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, category_service_1.CategoryService])
     ], CategoryListComponent);
     return CategoryListComponent;
 }());
