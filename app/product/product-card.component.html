@@ -10,8 +10,9 @@
                 <!--<div class="card-block">
                         <p class="card-text">{{product.desc}}</p>
                 </div>-->
-                <a class="btn btn-primary" 
-                    [routerLink]="['/product', product.id]">Browse</a>
+                <a class="btn btn-primary" (click)="addToCart(product)">Buy</a>
+                <a class="btn btn-secondary" 
+                    [routerLink]="['/product', product.id]">More info</a>
             </div>
         </div>
     </div>
