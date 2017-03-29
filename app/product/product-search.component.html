@@ -4,9 +4,13 @@
     </div>
     <div class="card-block">
         <div class="input-group">
-            <input #search type="text" class="form-control" placeholder="Search for...">
+            <input #search type="text" 
+            class="form-control" 
+            placeholder="Search for..."
+            (keyup)="searchChanged(search.value)">
             <span class="input-group-btn">
                 <button class="btn btn-secondary" 
+                [disabled]="disabled" 
                 (click)="searchProduct(search.value)"
                 type="button">Go!</button>
             </span>
