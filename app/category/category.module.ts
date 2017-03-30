@@ -6,6 +6,8 @@ import { CategoryCardComponent } from './category-card.component';
 import { CategorySlideComponent } from './category-slide.component';
 import { CategoryListComponent } from './category-list.component';
 
+import { CategoryTitlePipe } from './category.pipe';
+
 import { CategoryService } from './category.service';
 
 @NgModule({
@@ -13,12 +15,14 @@ import { CategoryService } from './category.service';
     declarations: [ 
         CategoryCardComponent, 
         CategorySlideComponent,
-        CategoryListComponent 
+        CategoryListComponent,
+        CategoryTitlePipe
     ],
     exports: [ 
         CategoryCardComponent, 
         CategorySlideComponent,
-        CategoryListComponent 
+        CategoryListComponent,
+        CategoryTitlePipe 
     ],
     providers: [ CategoryService ]
 })
