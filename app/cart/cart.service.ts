@@ -64,12 +64,12 @@ export class CartService {
     }
 
     private findItem(id: string): CartItem {
-        for (let i=0; i<this.cart.items.length; i++) {
-            if (this.cart.items[i].product.id === id) {
-                return this.cart.items[i];
-            }
-        }
-        return null;
+        return this.cart.items.find( (cartItem: CartItem):boolean => 
+            cartItem.product.id === id
+        );
+        // return this.cart.items.find(function(cartItem:CartItem):boolean {
+        //     return cartItem.product.id === id;
+        // });
     }
 
     private remove(item: CartItem) {
