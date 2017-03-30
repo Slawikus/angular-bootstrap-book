@@ -63,7 +63,7 @@ export class CartService {
         this.cart.amount -= item.amount;
     }
 
-    private findItem(id: string): CartItem {
+    findItem(id: string): CartItem {
         return this.cart.items.find( (cartItem: CartItem):boolean => 
             cartItem.product.id === id
         );

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ProductCardComponent } from './product-card.component';
 import { ProductGridComponent } from './product-grid.component';
 import { ProductSearchComponent } from './product-search.component';
+import { ProductViewComponent } from './product-view.component';
 
 import { CategoryModule } from '../category/category.module';
 
@@ -16,12 +17,14 @@ import { ProductService } from './product.service';
     declarations: [ 
         ProductCardComponent, 
         ProductGridComponent, 
-        ProductSearchComponent 
+        ProductSearchComponent,
+        ProductViewComponent
     ],
     exports: [
         ProductCardComponent, 
         ProductGridComponent, 
-        ProductSearchComponent 
+        ProductSearchComponent,
+        ProductViewComponent
     ],
     providers: [ ProductService ]
 })
