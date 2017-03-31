@@ -31,10 +31,10 @@ export class ProductViewComponent {
     }
 
     addToCart() {
-        this.cartService.addProduct(this.product);
+        this.cartItem = this.cartService.addProduct(this.product);
     }
 
     removeFromCart() {
-        this.cartService.removeProduct(this.product);
+        this.cartItem = this.cartService.removeProduct(this.product);
     }
 }

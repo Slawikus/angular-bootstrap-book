@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Product, ProductService } from '../product/product.service';
+import { Product } from '../product/product.service';
 
 export class Cart {
     count: number = 0;
@@ -17,16 +17,8 @@ export interface CartItem {
 @Injectable()
 export class CartService {
     cart: Cart = new Cart();
-    
 
-    constructor(private productService: ProductService){
-        let allProducts:Product[] = this.productService.getProducts()
-        this.addProduct(allProducts[0]);
-        this.addProduct(allProducts[1]);
-        this.addProduct(allProducts[1]);
-    }
-
-    addProduct(product: Product) {
+    addProduct(product: Product): CartItem {
         let item: CartItem = this.findItem(product.id);
 
         if (item) {
@@ -42,19 +34,21 @@ export class CartService {
         }
         this.cart.count++;
         this.cart.amount += product.price;
+        return item;
     }
 
-    removeProduct(product: Product) {
+    removeProduct(product: Product): CartItem {
         let item: CartItem = this.findItem(product.id);
-
         if (item) {
             item.count--;
+            item.amount -= product.price;
             if (!item.count) {
                 this.remove(item);
             }
             this.cart.count--;
             this.cart.amount -= product.price;
         }
+        return item;
     }
 
     removeItem(item: CartItem) {
