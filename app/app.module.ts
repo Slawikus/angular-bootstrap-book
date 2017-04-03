@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
@@ -17,6 +17,7 @@ import { routing } from './app.routes';
     imports: [
         BrowserModule, 
         FormsModule, 
+        ReactiveFormsModule,
         CategoryModule, 
         ProductModule,
         CartModule, 

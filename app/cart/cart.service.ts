@@ -66,6 +66,12 @@ export class CartService {
         // });
     }
 
+    clearCart() {
+        this.cart.items = [];
+        this.cart.amount = 0;
+        this.cart.count = 0;
+    }
+
     private remove(item: CartItem) {
         let indx: number = this.cart.items.indexOf(item);
         if (indx !== -1) {
