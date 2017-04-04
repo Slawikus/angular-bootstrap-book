@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ProductCardComponent } from './product-card.component';
@@ -13,7 +13,13 @@ import { CategoryModule } from '../category/category.module';
 import { ProductService } from './product.service';
 
 @NgModule({
-    imports: [ CommonModule, FormsModule, RouterModule, CategoryModule ],
+    imports: [ 
+        CommonModule, 
+        FormsModule,
+        ReactiveFormsModule, 
+        RouterModule, 
+        CategoryModule 
+    ],
     declarations: [ 
         ProductCardComponent, 
         ProductGridComponent, 

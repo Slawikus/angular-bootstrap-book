@@ -7,7 +7,7 @@
             <input #search type="text" 
             class="form-control" 
             placeholder="Search for..."
-            (keyup)="searchChanged(search.value)">
+            [formControl]="seachControl">
             <span class="input-group-btn">
                 <button class="btn btn-secondary" 
                 [disabled]="disabled" 
