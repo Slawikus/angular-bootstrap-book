@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
+import { CheckoutViewComponent } from './checkout/checkout-view.component';
 
 import { routing } from './app.routes';
 
@@ -27,7 +28,8 @@ import { routing } from './app.routes';
         AppComponent, 
         NavbarComponent, 
         WelcomeComponent, 
-        FooterComponent
+        FooterComponent,
+        CheckoutViewComponent
     ],
     bootstrap: [ AppComponent ]
 })

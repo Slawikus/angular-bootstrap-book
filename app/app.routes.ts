@@ -6,13 +6,15 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductGridComponent } from './product/product-grid.component';
 import { ProductViewComponent } from './product/product-view.component';
 import { CartViewComponent } from './cart/cart-view.component';
+import { CheckoutViewComponent } from './checkout/checkout-view.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
     { path: 'welcome', component: WelcomeComponent },
     { path: 'products', component: WelcomeComponent },
     { path: 'product/:id', component: ProductViewComponent },
-    { path: 'cart', component: CartViewComponent }
+    { path: 'cart', component: CartViewComponent },
+    { path: 'checkout', component: CheckoutViewComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);

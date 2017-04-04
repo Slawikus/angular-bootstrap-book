@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form">
+                <div class="form-group row">
+                    <label for="firstName" class="col-xs-2 col-form-label">First name:</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" value=""
+                        id="firstName" formControlName="firstName">
+                        <p [hidden]="form.controls.firstName.valid ||
+                                    form.controls.firstName.pristine"
+                        class="form-text alert-danger">
+                        The first name is required
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

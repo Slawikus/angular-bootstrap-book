@@ -10,10 +10,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <a class="navbar-brand" href="#">{{appName}}</a> 
             <div class="navbar-nav mr-auto"> 
-                <a class="nav-item nav-link active" href="#"> 
+                <a class="nav-item nav-link active" [routerLink]="['/welcome']"> 
                 Home <span class="sr-only">(current)</span> 
                 </a> 
-                <a class="nav-item nav-link" href="#">Products</a> 
+                <a class="nav-item nav-link" [routerLink]="['/products']">Products</a> 
                 <a class="nav-item nav-link" href="#">Checkout</a> 
                 <a class="nav-item nav-link disabled" href="#">Sign out</a> 
             </div> 
