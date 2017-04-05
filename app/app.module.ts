@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
@@ -19,6 +23,8 @@ import { routing } from './app.routes';
         BrowserModule, 
         FormsModule, 
         ReactiveFormsModule,
+        HttpModule,
+        InMemoryWebApiModule.forRoot(InMemoryDataService),
         CategoryModule, 
         ProductModule,
         CartModule, 
