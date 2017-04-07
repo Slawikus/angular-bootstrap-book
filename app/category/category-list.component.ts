@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Category, CategoryService } from './category.service';
@@ -7,12 +7,17 @@ import { Category, CategoryService } from './category.service';
     selector: 'db-category-list',
     templateUrl: 'app/category/category-list.component.html'
 })
-export class CategoryListComponent {
+export class CategoryListComponent implements OnInit {
     categories: Category[];
 
     constructor(private router: Router,
-                private categoryService: CategoryService) {
-        this.categories = this.categoryService.getCategories();
+                private categoryService: CategoryService) {}
+
+    ngOnInit(): void {
+         this.categoryService.getCategories()
+            .then( (categories: Category[]) => {
+                this.categories = categories;
+            });
     }
 
     filterProducts(category: Category) {

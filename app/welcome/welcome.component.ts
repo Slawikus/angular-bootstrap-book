@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category, CategoryService } from '../category/category.service';
 
 @Component({
     selector: 'db-welcome',
     templateUrl: 'app/welcome/welcome.component.html'
 })
-export class WelcomeComponent{
+export class WelcomeComponent implements OnInit {
     cardCategories: Category[];
-    constructor(private categoryService: CategoryService) {
-        this.cardCategories = this.categoryService.getCategories();
+    constructor(private categoryService: CategoryService) {}
+
+    ngOnInit(): void {
+        this.categoryService
+            .getCategories()
+            .then( (categories: Category[]) => {
+                this.cardCategories = categories;
+            });
     }
 }

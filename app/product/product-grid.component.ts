@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Product, ProductService } from './product.service';
@@ -7,19 +7,23 @@ import { Product, ProductService } from './product.service';
     selector: 'db-product-grid',
     templateUrl: 'app/product/product-grid.component.html'
 })
-export class ProductGridComponent {
+export class ProductGridComponent implements OnInit {
     products: any = []; 
  
     constructor(
-        private router: ActivatedRoute, 
-        private productService: ProductService) { 
-        this.router.queryParams.subscribe(params => {
+        private route: ActivatedRoute, 
+        private productService: ProductService) { }
+    
+    ngOnInit():void {
+        this.route.queryParams.subscribe( params => {
             let category: string = params['category'];
             let search: string = params['search'];
-            let products: Product[] = 
-                this.productService.getProducts(category, search);
-            this.products = this.transform(products);
-        }); 
+            this.products = [];
+            this.productService.getProducts(category, search)
+                .then( (products: Product[]) => {
+                    this.products = this.transform(products);
+                });
+        });
     }
 
     transform(source: Product[]) {
