@@ -5,15 +5,9 @@
     <div class="card-block">
         <div class="input-group">
             <input #search type="text" 
-            class="form-control" 
-            placeholder="Search for..."
-            [formControl]="seachControl">
-            <span class="input-group-btn">
-                <button class="btn btn-secondary" 
-                [disabled]="disabled" 
-                (click)="searchProduct(search.value)"
-                type="button">Go!</button>
-            </span>
+                class="form-control" 
+                placeholder="Search for..."
+                (keyup)="searchProduct(search.value)">
         </div>
     </div>
 </div>

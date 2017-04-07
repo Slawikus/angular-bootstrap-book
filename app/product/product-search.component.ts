@@ -10,16 +10,8 @@ import { Product } from './product.service';
 })
 export class ProductSearchComponent {
     disabled: boolean = true;
-    seachControl: FormControl;
 
     constructor(private router: Router) {}
-
-    ngOnInit() {
-        this.seachControl = new FormControl();
-        this.seachControl.valueChanges.subscribe( (value:string) => {
-            this.searchChanged(value);
-        } );
-    }
 
     searchProduct(value:string) {
         this.router.navigate(['/products'], { queryParams: { search: value }});
