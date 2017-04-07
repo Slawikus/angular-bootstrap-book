@@ -29,7 +29,7 @@ export class ProductViewComponent implements OnInit {
             let id: string = params['id'];
             this.productService
                 .getProduct(id)
-                .then( (product: Product) => this.product = product );
+                .subscribe( (product: Product) => this.product = product );
             this.cartItem = this.cartService.findItem(id);
         })
     }

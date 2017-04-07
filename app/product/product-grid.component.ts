@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+
 import { Product, ProductService } from './product.service';
 
 @Component({
@@ -8,22 +12,22 @@ import { Product, ProductService } from './product.service';
     templateUrl: 'app/product/product-grid.component.html'
 })
 export class ProductGridComponent implements OnInit {
-    products: any = []; 
+    products: Observable<Product[]>; 
  
     constructor(
         private route: ActivatedRoute, 
         private productService: ProductService) { }
     
     ngOnInit():void {
-        this.route.queryParams.subscribe( params => {
-            let category: string = params['category'];
-            let search: string = params['search'];
-            this.products = [];
-            this.productService.getProducts(category, search)
-                .then( (products: Product[]) => {
-                    this.products = this.transform(products);
-                });
-        });
+        this.route
+            .queryParams
+            .debounceTime(300)
+            .subscribe( params => {
+                let category: string = params['category'];
+                let search: string = params['search'];
+                this.products = this.productService.getProducts(category, search)
+                    .map(this.transform);
+            });
     }
 
     transform(source: Product[]) {

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
+import 'rxjs/add/operator/toPromise';
+
 export class Category {
     id: string;
     title: string;
