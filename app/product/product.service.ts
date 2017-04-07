@@ -28,15 +28,6 @@ export class ProductService {
             .catch(this.handleError);
     }
 
-    // getProduct(id: string): Product {
-    //     for (let I=0; I < this.products.length; I++) {
-    //         if (this.products[I].id === id) {
-    //             return this.products[I];
-    //         }
-    //     }
-    //     throw new ProductNotFoundException(`Product ${id} not found`);
-    // }
-
     getProducts(category?: string, search?: string):Promise<Product[]> {
         let url = this.productsUrl;
 
