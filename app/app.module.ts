@@ -18,13 +18,25 @@ import { CheckoutViewComponent } from './checkout/checkout-view.component';
 
 import { routing } from './app.routes';
 
+import { AngularFireModule } from 'angularfire2';
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyD-u3fcc7mSAFPzSQ4takShflsKJQzMMng",
+    authDomain: "ecommerce-3adb8.firebaseapp.com",
+    databaseURL: "https://ecommerce-3adb8.firebaseio.com",
+    projectId: "ecommerce-3adb8",
+    storageBucket: "ecommerce-3adb8.appspot.com",
+    messagingSenderId: "1069772899797"
+  };
+
 @NgModule({
     imports: [
         BrowserModule, 
         FormsModule, 
         ReactiveFormsModule,
         HttpModule,
-        InMemoryWebApiModule.forRoot(InMemoryDataService),
+        AngularFireModule.initializeApp(firebaseConfig),
+        // InMemoryWebApiModule.forRoot(InMemoryDataService),
         CategoryModule, 
         ProductModule,
         CartModule, 
