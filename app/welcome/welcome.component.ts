@@ -12,7 +12,7 @@ export class WelcomeComponent implements OnInit {
     ngOnInit(): void {
         this.categoryService
             .getCategories()
-            .then( (categories: Category[]) => {
+            .subscribe( (categories: Category[]) => {
                 this.cardCategories = categories;
             });
     }

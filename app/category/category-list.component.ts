@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { Category, CategoryService } from './category.service';
 
@@ -8,16 +9,13 @@ import { Category, CategoryService } from './category.service';
     templateUrl: 'app/category/category-list.component.html'
 })
 export class CategoryListComponent implements OnInit {
-    categories: Category[];
+    categories: Observable<Category[]>;
 
     constructor(private router: Router,
                 private categoryService: CategoryService) {}
 
     ngOnInit(): void {
-         this.categoryService.getCategories()
-            .then( (categories: Category[]) => {
-                this.categories = categories;
-            });
+         this.categories = this.categoryService.getCategories();
     }
 
     filterProducts(category: Category) {

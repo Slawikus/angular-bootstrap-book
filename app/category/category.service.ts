@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
+// import { Http, Response } from '@angular/http';
+import { AngularFire, FirebaseListObservable } from 'angularfire2'; 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
 
 export class Category {
     id: string;
@@ -13,20 +14,15 @@ export class Category {
 
 @Injectable() 
 export class CategoryService {
-    private categoriesUrl = 'app/categories';
+    private categoriesUrl = 'categories';
 
     private categories: Category[] = [];
 
-    constructor(private http: Http) {}
+    constructor(private af: AngularFire) {}
 
-    getCategories(): Promise<Category[]> {
-        return this.http
-            .get(this.categoriesUrl)
-            .toPromise()
-            .then( (response: Response) => {
-                this.categories = response.json().data as Category[];
-                return this.categories;
-            })
+    getCategories(): Observable<Category[]> {
+        return this.af.database
+            .list(this.categoriesUrl)
             .catch(this.handleError);
     }
 
@@ -39,8 +35,10 @@ export class CategoryService {
         return null;
     }
 
-    private handleError(error: any): Promise<any> {
-        window.alert(`An error occured: ${error}`);
-        return Promise.reject(error.message || error);
+    private handleError(error: any): Observable<any> {
+        let errorMsg = (error.message) ? error.message : error.status ?  
+            `${error.status} - ${error.statusText}` : 'Server error';
+        window.alert(`An error occured: ${errorMsg}`);
+        return Observable.throw(errorMsg);
     }
 }

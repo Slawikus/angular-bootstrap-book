@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+// import { Headers, Http, Response } from '@angular/http';
+import { AngularFire, FirebaseListObservable } from 'angularfire2'; 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/empty';
 
 export interface Product {
     id: string;
@@ -17,29 +19,34 @@ export interface Product {
 
 @Injectable()
 export class ProductService {
-    private productsUrl = 'app/products';
+    private productsUrl = 'products';
 
-    constructor(private http:Http) {}
+    constructor(private af: AngularFire) {}
 
     getProduct(id: string): Observable<Product> {
-        return this.http
-            .get(this.productsUrl + `/${id}`)
-            .map( (response: Response) => response.json().data as Product)
+        return this.af.database
+            .object(this.productsUrl + `/${id}`)
             .catch(this.handleError);
     }
 
-    getProducts(category?: string, search?: string):Observable<Product[]> {
-        let url = this.productsUrl;
-
-        if (category) {
-            url += `/?categoryId=${category}`;
-        } else if (search) {
-            url += `/?title=${search}`;
+    getProducts(category?: string, search?: string): Observable<Product[]> {
+        if (category || search) {
+            let query = <any>{};
+            if (category) {
+                query.orderByChild = 'categoryId';
+                query.equalTo = category;
+            } else {
+                query.orderByChild = 'title';
+                query.startAt = search.toUpperCase();
+                query.endAt = query.startAt + '\uf8ff';
+            }
+            return this.af.database
+                .list(this.productsUrl, {query: query})
+                .catch(this.handleError);
         }
-        return this.http
-            .get(url)
-            .map( (response:Response) => response.json().data as Product[] )
-            .catch(this.handleError);
+        else {
+            return Observable.empty();
+        }
     }
 
     private handleError(error: any): Observable<any> {

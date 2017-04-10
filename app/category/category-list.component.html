@@ -5,7 +5,7 @@
     <div class="card-block">
         <div class="list-group ">
             <a class="list-group-item" 
-             *ngFor="let category of categories"
+             *ngFor="let category of categories | async"
              (click)="filterProducts(category)">{{category.title}}</a> 
         </div>
     </div>
