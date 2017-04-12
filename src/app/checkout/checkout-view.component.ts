@@ -8,7 +8,7 @@ import { Cart, CartItem, CartService } from '../cart/cart.service';
     templateUrl: './checkout-view.component.html'
 })
 export class CheckoutViewComponent {
-    private cart: Cart;
+    cart: Cart;
     form: FormGroup;
 
     constructor(private cartService: CartService,
