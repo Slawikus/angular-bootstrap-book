@@ -5,8 +5,7 @@ import { AuthService } from './auth.service';
 
 @Component({
     selector: 'db-sign-in',
-    templateUrl: './sign-in.component.html',
-    providers: [ AuthService ]
+    templateUrl: './sign-in.component.html'
 })
 export class SignInComponent {
     submitted: boolean = false;

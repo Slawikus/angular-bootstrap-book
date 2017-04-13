@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
+import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -34,8 +35,6 @@ const firebaseAuthConfig = {
     method: AuthMethods.Redirect
 }
 
-import { SignInComponent } from './auth/sign-in.component';
-
 @NgModule({
     imports: [
         BrowserModule, 
@@ -47,6 +46,7 @@ import { SignInComponent } from './auth/sign-in.component';
         CategoryModule, 
         ProductModule,
         CartModule, 
+        AuthModule,
         routing
     ],
     declarations: [ 
@@ -54,8 +54,7 @@ import { SignInComponent } from './auth/sign-in.component';
         NavbarComponent, 
         WelcomeComponent, 
         FooterComponent,
-        CheckoutViewComponent,
-        SignInComponent
+        CheckoutViewComponent
     ],
     bootstrap: [ AppComponent ]
 })
