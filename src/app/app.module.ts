@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { InMemoryDataService } from './in-memory-data.service';
+// import { InMemoryDataService } from './in-memory-data.service';
 
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
@@ -18,9 +18,9 @@ import { CheckoutViewComponent } from './checkout/checkout-view.component';
 
 import { routing } from './app.routes';
 
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
-export const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyD-u3fcc7mSAFPzSQ4takShflsKJQzMMng",
     authDomain: "ecommerce-3adb8.firebaseapp.com",
     databaseURL: "https://ecommerce-3adb8.firebaseio.com",
@@ -29,13 +29,20 @@ export const firebaseConfig = {
     messagingSenderId: "1069772899797"
   };
 
+const firebaseAuthConfig = {
+    provider: AuthProviders.Password,
+    method: AuthMethods.Redirect
+}
+
+import { SignInComponent } from './auth/sign-in.component';
+
 @NgModule({
     imports: [
         BrowserModule, 
         FormsModule, 
         ReactiveFormsModule,
         HttpModule,
-        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
         // InMemoryWebApiModule.forRoot(InMemoryDataService),
         CategoryModule, 
         ProductModule,
@@ -47,7 +54,8 @@ export const firebaseConfig = {
         NavbarComponent, 
         WelcomeComponent, 
         FooterComponent,
-        CheckoutViewComponent
+        CheckoutViewComponent,
+        SignInComponent
     ],
     bootstrap: [ AppComponent ]
 })

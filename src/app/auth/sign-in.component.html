@@ -1,0 +1,6 @@
+<h1>login component</h1>
+<p>{{error}}</p>
+<p>{{username}}</p>
+<input #email type="email" placeholder="Email">
+<input #password type="password" placeholder="Password">
+<button (click)="onSubmit(email.value)">Submit</button>

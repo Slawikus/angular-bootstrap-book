@@ -15,9 +15,9 @@
                 </a> 
                 <a class="nav-item nav-link" [routerLink]="['/products']">Products</a> 
                 <a class="nav-item nav-link" [routerLink]="['/checkout']">Checkout</a> 
-                <a class="nav-item nav-link disabled" href="#">Sign out</a> 
+                <a class="nav-item nav-link" (click)="logout()" *ngIf="authService.authenticated">Sign out</a> 
             </div> 
-            <db-cart-menu></db-cart-menu>
+            <db-cart-menu *ngIf="authService.authenticated"></db-cart-menu>
         </div>
     </div>
 </nav> 

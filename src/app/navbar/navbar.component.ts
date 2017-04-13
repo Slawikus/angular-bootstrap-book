@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
-import { NavItem } from './navitem';
+
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
     selector: 'db-navbar',
-    templateUrl: './navbar.component.html'
+    templateUrl: './navbar.component.html',
+    providers: [ AuthService ]
 })
 export class NavbarComponent {
     appName: string = 'Dream Bean';
 
-    navItems: NavItem[] = [
-        {href: '#', label: 'Home', active: true},
-        {href: '#', label: 'Products', active: false},
-        {href: '#', label: 'Checkout', active: false},
-        {href: '#', label: 'Sign out', active: false}
-    ];
+    constructor(private authService: AuthService,
+                private router: Router) {}
+
+    logout() {
+        this.authService.logout();
+        // this.router.navigateByUrl("/login");
+    }
 }
