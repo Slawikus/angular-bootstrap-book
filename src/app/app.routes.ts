@@ -13,10 +13,10 @@ const routes: Routes = [
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
     { path: 'login', component: SignInComponent },
     { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
-    { path: 'products', component: WelcomeComponent },
-    { path: 'product/:id', component: ProductViewComponent },
-    { path: 'cart', component: CartViewComponent },
-    { path: 'checkout', component: CheckoutViewComponent }
+    { path: 'products', component: WelcomeComponent, canActivate: [AuthGuard] },
+    { path: 'product/:id', component: ProductViewComponent, canActivate: [AuthGuard] },
+    { path: 'cart', component: CartViewComponent, canActivate: [AuthGuard] },
+    { path: 'checkout', component: CheckoutViewComponent, canActivate: [AuthGuard] }
 ];
 
 export const routing = RouterModule.forRoot(routes);

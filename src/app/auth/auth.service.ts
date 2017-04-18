@@ -10,9 +10,9 @@ export class AuthService {
        this.af.auth.subscribe( (state: FirebaseAuthState) => this.authState = state);
    }
 
-    get authenticated(): boolean {
-        return this.authState !== null;
-    }
+   get authenticated(): boolean {
+       return this.authState !== null;
+   }
 
    login(email: string, password: string): firebase.Promise<FirebaseAuthState> { 
        return this.af.auth.login({ 
