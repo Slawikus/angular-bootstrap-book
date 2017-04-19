@@ -22,7 +22,7 @@ export class SignInComponent {
 
     onSubmit(): void {
         this.submitted = true;
-        this.authService.login(this.loginForm.value.email, 'secret')
+        this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
             .then( (user)=> {
                 this.username = user.auth.email;
                 this.postSignIn();
