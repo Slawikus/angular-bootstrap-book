@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 
@@ -12,14 +12,17 @@ export class SignInComponent {
     submitted: boolean = false;
     error: string = '';
     username: string = '';
-    email = new FormControl();
+    loginForm = new FormGroup ({
+        email: new FormControl(),
+        password: new FormControl()
+    });
 
     constructor(private authService: AuthService,
                 private router: Router) {}
 
-    onSubmit(value:any): void {
+    onSubmit(): void {
         this.submitted = true;
-        this.authService.login(value, 'secret')
+        this.authService.login(this.loginForm.value.email, 'secret')
             .then( (user)=> {
                 this.username = user.auth.email;
                 this.postSignIn();
