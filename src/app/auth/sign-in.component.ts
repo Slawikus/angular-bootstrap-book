@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 
@@ -11,6 +12,7 @@ export class SignInComponent {
     submitted: boolean = false;
     error: string = '';
     username: string = '';
+    email = new FormControl();
 
     constructor(private authService: AuthService,
                 private router: Router) {}
