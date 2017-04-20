@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 
@@ -22,14 +22,14 @@ export class SignInComponent {
 
     createForm() {
         this.loginForm = this.fb.group({
-            email: '',
-            password: ''
+            email: ['', Validators.required],
+            password: ['', Validators.required]
         });
     }
 
     onSubmit(): void {
         this.submitted = true;
-        this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+        this.authService.login(this.email, this.password)
             .then( (user)=> {
                 this.username = user.auth.email;
                 this.postSignIn();
@@ -38,6 +38,14 @@ export class SignInComponent {
                 this.error = 'Username or password is not correct';
                 this.submitted = false;
             });
+    }
+
+    private get email(): string {
+        return this.loginForm.get('email').value;
+    }
+
+    private get password(): string {
+        return this.loginForm.get('password').value;
     }
 
     private postSignIn() {
