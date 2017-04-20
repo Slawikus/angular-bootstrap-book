@@ -19,11 +19,9 @@
                 <input formControlName="password" type="password" class="form-control" 
                     id="userPassword" placeholder="Password">
             </div>
-            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+            <button type="button" (click)="onSubmit()" class="btn btn-primary">Submit</button>
         </form>
         <p>Form value: {{ loginForm.value | json }}</p>
         <p>Form status: {{ loginForm.status | json }}</p>
-        <button type="submit" class="btn btn-primary" 
-                (click)="onSubmit()">Submit</button>
     </div>
 </div>
