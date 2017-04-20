@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 
@@ -12,13 +12,20 @@ export class SignInComponent {
     submitted: boolean = false;
     error: string = '';
     username: string = '';
-    loginForm = new FormGroup ({
-        email: new FormControl(),
-        password: new FormControl()
-    });
+    loginForm: FormGroup;
 
     constructor(private authService: AuthService,
-                private router: Router) {}
+                private router: Router,
+                private fb: FormBuilder) {
+        this.createForm();
+    }
+
+    createForm() {
+        this.loginForm = this.fb.group({
+            email: '',
+            password: ''
+        });
+    }
 
     onSubmit(): void {
         this.submitted = true;
