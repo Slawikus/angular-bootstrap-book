@@ -41,7 +41,7 @@ export class SignInComponent {
     }
 
     private get email(): string {
-        return this.loginForm.get('email').value;
+        return this.loginForm.value.email as string;
     }
 
     private get password(): string {
