@@ -11,7 +11,6 @@ import { AuthService } from './auth.service';
 export class SignInComponent {
     submitted: boolean = false;
     error: string = '';
-    username: string = '';
     loginForm: FormGroup;
 
     constructor(private authService: AuthService,
@@ -22,7 +21,7 @@ export class SignInComponent {
 
     createForm() {
         this.loginForm = this.fb.group({
-            email: ['', Validators.required],
+            email: ['', [Validators.required,  Validators.minLength(4)]],
             password: ['', Validators.required]
         });
     }
@@ -31,7 +30,6 @@ export class SignInComponent {
         this.submitted = true;
         this.authService.login(this.email, this.password)
             .then( (user)=> {
-                this.username = user.auth.email;
                 this.postSignIn();
             })
             .catch( (error) => {
