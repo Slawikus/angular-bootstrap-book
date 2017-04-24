@@ -11,7 +11,7 @@ import { AuthService } from '../auth/auth.service';
 export class NavbarComponent {
     appName: string = 'Dream Bean';
 
-    constructor(private authService: AuthService,
+    constructor(public authService: AuthService,
                 private router: Router) {}
 
     logout() {
